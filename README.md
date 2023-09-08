@@ -1,7 +1,7 @@
 # Monorepo
 
-- [ Trenton Creamer] **(TODO: Change this heading to your name, because your github name is often not your real name)**
-- [ ] _[Phonetic spelling](https://dictionary.cambridge.org/us/help/phonetics.html) of your name here_ **(TODO: Change this)**
+- [Trenton Creamer]
+- [TREN-tuh] - [Phonetic spelling](https://dictionary.cambridge.org/us/help/phonetics.html)
 
 ## Important Documents
 
