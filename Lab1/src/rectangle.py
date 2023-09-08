@@ -12,7 +12,7 @@ class Shape(ABC):
     # Abstract method that can be inherited by subclasses
     # This is a decorator
     @abstractmethod
-    def set_values(self, width, height):
+    def set_values(self):
         pass
     @abstractmethod
     def area(self):
