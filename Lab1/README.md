@@ -9,7 +9,7 @@ For your first lab today, you will be getting acquainted with part of your envir
 # Implementation Logistics
 
 - You may use whatever operating system, IDE, or tools for completing this assignment.
-	- However, my instructions will usually be using the command-line, and that is what I will most easily be able to assist you with.
+  - However, my instructions will usually be using the command-line, and that is what I will most easily be able to assist you with.
 - In the future there may be restrictions, so please review the logistics each time.
 
 # Resources to help
@@ -17,10 +17,10 @@ For your first lab today, you will be getting acquainted with part of your envir
 Provided below are a list of curated resources to help you complete the tasks below. Consult them (read them, or do ctrl+f for keywords) if you get stuck.
 
 1. https://www.youtube.com/watch?v=3RjQznt-8kE&list=PL4cUxeGkcC9goXbgTDQ0n_4TBzOO0ocPR
-	- A Useful playlist of git tutorials.
-	- Tutorial on creating branches https://www.youtube.com/watch?v=QV0kVNvkMxc
-	- Tutorial on merging branches https://www.youtube.com/watch?v=XX-Kct0PfFc
-	- Moving branches upstream: https://www.git-tower.com/learn/git/faq/set-upstream
+   - A Useful playlist of git tutorials.
+   - Tutorial on creating branches https://www.youtube.com/watch?v=QV0kVNvkMxc
+   - Tutorial on merging branches https://www.youtube.com/watch?v=XX-Kct0PfFc
+   - Moving branches upstream: https://www.git-tower.com/learn/git/faq/set-upstream
 
 # Task 1 - Git basics
 
@@ -40,11 +40,11 @@ Github.com ('Github' for short) is the webhost for a software version control sy
 
 ## Obtaining your repository
 
-1. Run `git clone your_repository_url` to establish a git repository on your system. *your_repository_url* is found by clicking the 'green' button on you Monorepo homepage(move one directory up from this folder).
-	- It should look something like `https://github.com/CourseName/Monorepo-yourname.git`
+1. Run `git clone your_repository_url` to establish a git repository on your system. _your_repository_url_ is found by clicking the 'green' button on you Monorepo homepage(move one directory up from this folder).
+   - It should look something like `https://github.com/CourseName/Monorepo-yourname.git`
 2. When you make a change to a file within this directory you can see what is different by:
-	- run `git status` to see what you have changed locally on your computer. 
-	- Changes you have made locally have not yet been saved to github's servers. 
+   - run `git status` to see what you have changed locally on your computer.
+   - Changes you have made locally have not yet been saved to github's servers.
 3. When you are happy with your changes do `git add whatever_file.c` which prepares that specific file to be added to the main branch. [[git add documentation](https://git-scm.com/docs/git-add)]
 4. Next, you will do `git commit -m "some informative message about your changes"` to record changes in your repository [[git-commit documentation](https://git-scm.com/docs/git-commit)]
 5. Finally, do a `git push` to actually make things happen--meaning everything you have added will go to the github server. You can check your github.com repository to see exactly what I will see. [[git push documentation](https://git-scm.com/docs/git-push)]
@@ -63,13 +63,13 @@ After you have downloaded your repository, you find that you have a piece of cod
 
 1. Explicitly define the constructor and include 'width' and 'height' as parameters to the constructor. Use those parameters to set declare and set the instance variables, 'width' and 'height'
 2. Make 'width' and 'height' private variables.
-	- Currently, they are publicly accessible, and typically we do not want variables to be publicly accessible, but prefer instead to have 'getter' or 'setter' member functions to change their values.
-3. The class itself should be abstracted to an abstract class called 'Shape' so that Rectangle can be a subclass of Shape with two abstract methods `set_values` and `area`. 
+   - Currently, they are publicly accessible, and typically we do not want variables to be publicly accessible, but prefer instead to have 'getter' or 'setter' member functions to change their values.
+3. The class itself should be abstracted to an abstract class called 'Shape' so that Rectangle can be a subclass of Shape with two abstract methods `set_values` and `area`.
 4. After completing the first 3 steps, we should have two classes in rectangle.py: Shape and Rectangle
 
 ## Your Next Task
 
-Create a new branch called 'refactor' and make the suggested refactorings. Merge the 'refactor' branch into the main branch after making the suggested refactorings from your 'refactor' branch. 
+Create a new branch called 'refactor' and make the suggested refactorings. Merge the 'refactor' branch into the main branch after making the suggested refactorings from your 'refactor' branch.
 
 ### Creating new branch and merging to main
 
@@ -113,14 +113,14 @@ git status
 
 # Add the change to the branch
 # git add <file name> or 'git add .'
-git add . 
+git add .
 
 # Add a commit message
-git commit -m "Refactored rectangle class" 
+git commit -m "Refactored rectangle class"
 
-# Now we are going to push your changes 'upstream' in 
+# Now we are going to push your changes 'upstream' in
 # a separate branch. The '-u' argument sets us up
-# to push changes upstream, or otherwise to 
+# to push changes upstream, or otherwise to
 # be tracked by github.com. This means our branch
 # that has only been created on our 'local' machine,
 # will now be accessible on a remote machine.
@@ -130,7 +130,7 @@ git push -u origin refactor
 # Pause now for a moment, and go to github.com in your repository.
 # Towards the left-corner of your repository, click 'main' and
 # see that your 'refactor' branch is an option in the drop-down.
-# If you navigate to your lab/src  directory where retangle.py 
+# If you navigate to your lab/src  directory where retangle.py
 # resides, you should note that the main and refactor branches
 # are different.
 
