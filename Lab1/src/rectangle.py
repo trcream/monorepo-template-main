@@ -22,11 +22,11 @@ class Shape(ABC):
 class Rectangle(Shape):
     def set_values(self, width, height):
         # Make the width and height a private variable with a double underscore
-        self.__width = width
-        self.__height = height
+        self.__width__ = width
+        self.__height__ = height
 
     def area(self):
-        return self.__width * self.__height
+        return self.__width__ * self.__height__
 
 
 if __name__ == "__main__":
