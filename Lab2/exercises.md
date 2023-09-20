@@ -35,17 +35,21 @@ Yes, a list does allow random access.This is because the data is stored in a con
 1. Take a look at the requests API documentation here: https://requests.readthedocs.io/en/latest/  
    Comment if the functions are well named in the Requests module (Follow the previous link to the documentation to see if you can find the Requests module (hint: look for API Reference)).
 
-_Edit your responses here_
+   In the context of the requests API, I think that the function names convey the type of request being made pretty well. We have 7 main methods which are GET, OPTIONS, HEAD, POST, PUT, PATCH, or DELETE.
 
 2. Take a look at the [Requests](https://requests.readthedocs.io/en/latest/api/#lower-level-classes) class. APIs that have more than say 5 arguments in a function can be confusing or error prone to use. This is a heuristic of course, but do you see any member functions that include lots of arguments?
 
-_Edit your responses here_
+Requests.Request has up to 10 parametrs that can be included which can be confusing. With so many arguments it can be confusing as to what is most critical to use or not.
 
 3. Take another look at the Requests class. Note that many of the methods includes `**kwargs` as an argument. What is `**kwargs`? Why might it be good for a method to have a `**kwargs` argument? Why might it be bad?
 
-_Edit your responses here_
+`**kwargs` stands for key word arguments. This allows us to enter a keyworded variable amount of arguments into a function. It being keyworded means that we provide a name to the variables passed in the function. They keywords are essentially having their word mapped to a value.
+
+Strengths are that it is quite flexible and we can input different data types into the key words. We also have a refrence word that maps to the value.
+
+Weaknesses are that it could be potentially hard to clean the keyword data if we have many different data types. Also there are a lot of different key words that could be entered which would not give much structure to our code.
 
 4. Take a look at the [Session class.] (https://requests.readthedocs.io/en/latest/api/#request-sessions) Not only can you read the API's for that class, you can also view the source code by clicking the 'source' text.
    Notice how some methods have arguments that are set to `None` while other arguments are not set to anything. Why is that? Can arguments be set to anything besides `None`? Why might it be good to set an argument by some predetermined value?
 
-_Edit your responses here_
+   By setting something to None and having that in the docs, then you know that parameter is optional. If there is an argument that we know we need, then we can set it to some predetermined value to minimize user error. So essentially None is helping us determine what is critical or not to the function.
