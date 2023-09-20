@@ -7,7 +7,6 @@ class BeautifulEncoder(json.JSONEncoder):
     def default(self, obj):
         # First we need to get the type of the object
         name = type(obj).__name__
-        print(f"The type of the object is {name}")
         # .__name__ is the name of the class
         try:
             # Try to find a custom encoder for the object type
@@ -21,20 +20,16 @@ class BeautifulEncoder(json.JSONEncoder):
             encoded = encoder(obj)
             # Tag the encoded object with the special key 
             encoded["__extended_json_type__"] = name
-            print("The encoded object is: ", encoded)   
             return encoded
 
     # Encode complex objects
     def encode_complex(self, obj):
-        print("Running encode_complex")
         return {"real" : obj.real, "imag" : obj.imag}
     
     def encode_range(self,obj):
-        print("Running encode_range")
         return {"start" : obj.start, "stop" : obj.stop, "step" : obj.step }
     
     def dumps(self, obj, **kwargs):
-        print("Running custom dumps")
         return json.dumps(obj, cls=BeautifulEncoder, **kwargs)
         
 
@@ -61,14 +56,11 @@ class BeautifulDecoder(json.JSONDecoder):
             return decoder(obj)
         
     def decode_complex(self,obj):
-        print("Running decode_complex")
         return complex(obj["real"], obj["imag"])
     
     def decode_range(self,obj):
-        print("Running decode_complex")
         return range(obj["start"], obj["stop"], obj["step"])
     
     def loads(self,obj, **kwargs):
-        print("Running custom loads")
         return json.loads(obj, cls=BeautifulDecoder)
 

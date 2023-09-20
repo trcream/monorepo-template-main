@@ -17,13 +17,13 @@ def test_encode_range():
 def test_decode_complex():
     encoded_json = '{"real": 1.0, "imag": 2.0, "__extended_json_type__": "complex"}'
     decoder = BeautifulDecoder()
-    decoded = decoder.loads(encoded_json, cls=BeautifulDecoder)
+    decoded = decoder.loads(encoded_json)
     assert decoded == complex(1,2)
 
 def test_decode_range():
     encoded_json = '{"start": 1, "stop": 10, "step": 3, "__extended_json_type__": "range"}'
     decoder = BeautifulDecoder()
-    decoded = decoder.loads(encoded_json, cls=BeautifulDecoder)
+    decoded = decoder.loads(encoded_json)
     assert decoded == range(1,10,3)
 
 
