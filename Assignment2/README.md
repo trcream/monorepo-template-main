@@ -2,12 +2,15 @@
 
 - Name: Trenton Creamer
 - How many hours did it take you to complete this assignment?
+  - This assignment took me around 6 hours
 - Did you collaborate with any other students/TAs/Professors?
+  - I did this assignment by myself
 - Did you use any external resources? (Cite them below)
-  - tbd
-  - tbd
+  - NA. I used the provided resources
 - (Optional) What was your favorite part of the assignment?
+  - I liked overriding the JSON library. I think this is can be very useful for my future work.
 - (Optional) How would you improve the assignment?
+  - I think the assignment is good as is
 
 # Implementation Logistics
 
