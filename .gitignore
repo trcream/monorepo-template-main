@@ -1,3 +1,7 @@
+# Gitignore file already created before, but this is where I would personall add it 
+# Task 1 of Lab2 - Gitignore file
 .idea*
 .DS_Store
 .venv*
+.pytest_cache/
+__pycache__/
