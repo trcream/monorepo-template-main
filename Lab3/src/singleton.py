@@ -11,11 +11,15 @@ class Logger:
             cls._instance = super(Logger, cls).__new__(cls)
             cls._instance.init_singleton()
         else:
-            print(f"Logger already created, keeping first instance at memory location {id(cls._instance)}")
+            print(f"logger already created")
+            print(f"Memory location: {id(cls._instance)} \n")
+
         return cls._instance
     
     def init_singleton(self):
-        print(f"Logger created exactly once at memory location {id(self)}")
+        print(f"Logger created exactly once")
+        print(f"Memory location: {id(self)} \n")
+
         self.messages = []
 
     def add_message(self, message):
