@@ -28,7 +28,6 @@ class Texture():
 
 class Image:
     def __init__(self, w, h):
-        print("Constructor called")
         self.m_width = w
         self.m_height = h
         # The image has a texture
@@ -48,7 +47,7 @@ class Image:
 
 
 
-
+# Previous inheritance example
 # class Image:
 #     def __init__(self, w, h):
 #         print("Constructor called")
@@ -87,8 +86,8 @@ class Image:
 
 
 def main():
-    # random.seed()
-
+    random.seed()
+    # Previous inheritance example
     # # Create a first image
     # image1 = Image(100, 200)
     # # Create a second image
@@ -98,14 +97,11 @@ def main():
     # print(f"image2: {image2.getWidth()}, {image2.getHeight()}")
     # print(f"image2 red color at (0, 0): {image2.getPixelColorR(0, 0)}")
 
-    # Convert to a has-a relationship
+    # Testing the compositional has-a relationship
 
     image3 = Image(100, 200)
     print(f"image3: {image3.getWidth()}, {image3.getHeight()}")
     print(f"image3 red color at (0, 0): {image3.texture.getPixelColorR(0, 0)}")
-
-
-
 
 if __name__ == "__main__":
     main()

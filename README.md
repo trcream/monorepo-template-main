@@ -1,7 +1,7 @@
 # Monorepo
 
 - [Trenton Creamer]
-- [TREN-tuh] - [Phonetic spelling](https://dictionary.cambridge.org/us/help/phonetics.html)
+- [TREN-tuhn] - [Phonetic spelling](https://dictionary.cambridge.org/us/help/phonetics.html)
 
 ## Important Documents
 

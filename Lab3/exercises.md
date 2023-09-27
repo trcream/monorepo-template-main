@@ -19,17 +19,17 @@ Update your answers to the following questions, make sure to commit this file an
 4. What methods and attributes does the Texture class inherit from 'Image'?
 
    - Inherited Attributes:
-     m_width
-     m_height
-     m_colorChannels
-     m_Pixels
+     - m_width
+     - m_height
+     - m_colorChannels
+     - m_Pixels
    - Inherited Methods:
-     `__init__`(constructor)
-     getWidth
-     getHeight
-     getPixelColorR
-     getPixels
-     setPixelsToRandomValue
+     - `__init__`(constructor)
+     - getWidth
+     - getHeight
+     - getPixelColorR
+     - getPixels
+     - setPixelsToRandomValue
 
 5. Do you think a texture should have a 'has-a' (composition) or 'is-a'(inheritance) relationship with 'Image'? If you think it is a 'has-a' relationship, refactor the code. As long as you defend your decision in the response below it could be either--but defend your position well!
 

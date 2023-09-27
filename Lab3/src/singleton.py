@@ -1,10 +1,6 @@
 class Logger:
     _instance = None  # Private class variable to hold the single instance
 
-
-    # def __init__(self):
-    #     self.messages = []
-
     def __new__(cls):
         # Check if the class has an instance. If not call the constructor
         if cls._instance is None:
