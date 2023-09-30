@@ -3,6 +3,8 @@ from __future__ import print_function
 
 from gilded_rose import *
 
+# Visual test of the GildedRose class
+
 if __name__ == "__main__":
     print("OMGHAI!")
     items = [
@@ -19,6 +21,7 @@ if __name__ == "__main__":
 
     days = 2
     import sys
+    # This means that we can add a number of days to the command line when we run the program
     if len(sys.argv) > 1:
         days = int(sys.argv[1]) + 1
     for day in range(days):

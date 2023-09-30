@@ -8,6 +8,7 @@ class Item:
         self.sell_in = sell_in
         self.quality = quality
 
+    # Printing off item info when item is printed 
     def __repr__(self):
         return "%s, %s, %s" % (self.name, self.sell_in, self.quality)
 
@@ -17,6 +18,17 @@ class GildedRose(object):
     def __init__(self, items: list[Item]):
         # DO NOT CHANGE THIS ATTRIBUTE!!!
         self.items = items
+
+    # Looping through the list. Ideally we would have a hashmap for O(1) lookup
+    def get_item_sell_in(self, item_name):
+        for item in self.items:
+            if item.name == item_name:
+                return item.sell_in
+
+    def get_item_quality(self, item_name):
+        for item in self.items:
+            if item.name == item_name:
+                return item.quality
 
     def update_quality(self):
         for item in self.items:
