@@ -1,40 +1,34 @@
-**TODO for your task:** Edit the Text in italics with your text.
-
-<hr>
-
 # Use Case 1
 
+**Use Case**: Mini Paint Window Dimensions
+
+**Primary Actor**: User
+
+**Goal in Context**: To display the paint window at the in the correct dimensions.
+
+**Preconditions**: The program must be opened by and started by the user.
+
+**Trigger**: Double clicking the applicaton icon to open the app. The window will then automatically open.
+
+**Scenario 1**: The user will double click the application which will then automatically open the screen window.
+
+**Scenario 1**: The user will click a drop down menu to open a secondory paint window in a new tab.
+
+**Exceptions**: The program may have issues opening. In this case, an error message should be given to the user for them to try opening the application again.
+
+**Priority**: High-priority
+
+**When available**: First Release
+
+**Channel to actor**: The user interactes through I/O devices. This includes the keyboard and mouse in which they will use to open the application. The applicaton window should automatically open when the user starts the program and should open new windows within 1 second of the user opening another tab.
+
+**Secondary Actor**: N/A
+
+**Channels to Secondary Actors**: N/A
+
+**Open Issues**: We should consider having adjustable window sizes that could fit different sized screense. It is also nice for a user to be able to adjust the dimensions according to their needs.
+
 <hr>
-
-**Use Case**: *use-case-title*
-
-**Primary Actor**: *primary-actor*
-
-**Goal in Context**: *the aim of the primary-actor in a particular circumstance*
-
-**Preconditions**: *conditions that must be true before the scenario may play out*
-
-**Trigger**: *an action or actions that initiate the scenario*
-  
-**Scenario**: *an enumerated list of steps describing the actions and interactions of the primary actor with the system*
- 
-**Exceptions**: *errors or faults that may occur during the scenario. Should include remedy/corrective action taken by the primary actor*
-
-**Priority**: *relative importance of this use case compared to other use cases*
-
-**When available**: *the targeted release that covers this use case*
-
-**Channel to actor**: *the means through which the primary actor and the system communicate*
-
-**Secondary Actor**: *any other actors – people or systems – that may be involved in the scenario*
-
-**Channels to Secondary Actors**: *the means through which any secondary actors may interact with the system or other actors*
-
-**Open Issues**: *notes, concerns, or other materials*
-
-<hr>
-
-
 
 (adapted by Pressman and Maxim, Software Engineering: A Practitioner’s Approach, pp. 151-152, from Cockburn,
 A., Writing Effective Use-Cases, Addison-Wesley, 2001)

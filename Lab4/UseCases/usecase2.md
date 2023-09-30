@@ -1,40 +1,34 @@
-**TODO for your task:** Edit the Text in italics with your text.
-
-<hr>
-
 # Use Case 2
 
+**Use Case**: Keyboard Number Binding to Preset Colors
+
+**Primary Actor**: User
+
+**Goal in Context**: To select different preset colors by pressing the numbers 1-8
+
+**Preconditions**: The program must be running and in a responsive state.
+
+**Trigger**: The user can hit the number key on the number key, number bar.
+
+**Scenario 1**: A user will press one of the key 1-8 on the number bar.
+
+**Scenario 2**: A user will press one of the key 1-8 on the number pad.
+
+**Exceptions**: There may be a key that does not work on the keyboard. The user should be able to select the desired color through other means like a color palette in the app.
+
+**Priority**: Medium-priority
+
+**When available**: First release or potentially second release
+
+**Channel to actor**: The user interactes through I/O devices. This is the keyboard that the user will use to push the keys.
+
+**Secondary Actor**: NA
+
+**Channels to Secondary Actors**: NA
+
+**Open Issues**: The user needs a different means to select the colors that they desire. This could be a color palette built inside of the app.
+
 <hr>
-
-**Use Case**: *use-case-title*
-
-**Primary Actor**: *primary-actor*
-
-**Goal in Context**: *the aim of the primary-actor in a particular circumstance*
-
-**Preconditions**: *conditions that must be true before the scenario may play out*
-
-**Trigger**: *an action or actions that initiate the scenario*
-  
-**Scenario**: *an enumerated list of steps describing the actions and interactions of the primary actor with the system*
- 
-**Exceptions**: *errors or faults that may occur during the scenario. Should include remedy/corrective action taken by the primary actor*
-
-**Priority**: *relative importance of this use case compared to other use cases*
-
-**When available**: *the targeted release that covers this use case*
-
-**Channel to actor**: *the means through which the primary actor and the system communicate*
-
-**Secondary Actor**: *any other actors – people or systems – that may be involved in the scenario*
-
-**Channels to Secondary Actors**: *the means through which any secondary actors may interact with the system or other actors*
-
-**Open Issues**: *notes, concerns, or other materials*
-
-<hr>
-
-
 
 (adapted by Pressman and Maxim, Software Engineering: A Practitioner’s Approach, pp. 151-152, from Cockburn,
 A., Writing Effective Use-Cases, Addison-Wesley, 2001)

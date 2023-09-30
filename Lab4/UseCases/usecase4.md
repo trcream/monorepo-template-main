@@ -1,40 +1,36 @@
-**TODO for your task:** Edit the Text in italics with your text.
-
-<hr>
-
 # Use Case 4
 
+**Use Case**: Draw with Mouth Functionality
+
+**Primary Actor**: User
+
+**Goal in Context**: To be able to draw and generate pixels with the left click and holding of the mouse.
+
+**Preconditions**: The program must be running and in a responsive state. A draw window must be open.
+
+**Trigger 1**: Clicking the left mouse
+
+**Trigger 2**: Holding the left mouse
+
+**Scenario 1**: A user will click the mouse once.
+
+**Scenario 2**: A user will click and hold the mouse and drag it across the screen.
+
+**Exceptions**: The program may become potentially unresponsive. In this case, the program can be terminated from the operating system.
+
+**Priority**: High Priority
+
+**When available**: First Release
+
+**Channel to actor**: The primary actor communicates through I/O devices. This includes the keyboard and the mouse. he user is responsible for input into the mouse
+
+**Secondary Actor**: N/A
+
+**Channels to Secondary Actors**: N/A
+
+**Open Issues**: The user also needs a way to erase what the have drawn in a similiar manner as clicking and dragging.
+
 <hr>
-
-**Use Case**: *use-case-title*
-
-**Primary Actor**: *primary-actor*
-
-**Goal in Context**: *the aim of the primary-actor in a particular circumstance*
-
-**Preconditions**: *conditions that must be true before the scenario may play out*
-
-**Trigger**: *an action or actions that initiate the scenario*
-  
-**Scenario**: *an enumerated list of steps describing the actions and interactions of the primary actor with the system*
- 
-**Exceptions**: *errors or faults that may occur during the scenario. Should include remedy/corrective action taken by the primary actor*
-
-**Priority**: *relative importance of this use case compared to other use cases*
-
-**When available**: *the targeted release that covers this use case*
-
-**Channel to actor**: *the means through which the primary actor and the system communicate*
-
-**Secondary Actor**: *any other actors – people or systems – that may be involved in the scenario*
-
-**Channels to Secondary Actors**: *the means through which any secondary actors may interact with the system or other actors*
-
-**Open Issues**: *notes, concerns, or other materials*
-
-<hr>
-
-
 
 (adapted by Pressman and Maxim, Software Engineering: A Practitioner’s Approach, pp. 151-152, from Cockburn,
 A., Writing Effective Use-Cases, Addison-Wesley, 2001)
