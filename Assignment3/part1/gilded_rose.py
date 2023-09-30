@@ -32,22 +32,31 @@ class GildedRose(object):
 
     def update_quality(self):
         for item in self.items:
+            # Checking a full backstage name but should be backstage in the name
             if item.name != "Aged Brie" and item.name != "Backstage passes to a TAFKAL80ETC concert":
+                # Making sure item quality does not go below 0
                 if item.quality > 0:
                     if item.name != "Sulfuras, Hand of Ragnaros":
                         item.quality = item.quality - 1
             else:
                 if item.quality < 50:
+                    # Increasing item quality the first time 
                     item.quality = item.quality + 1
                     if item.name == "Backstage passes to a TAFKAL80ETC concert":
                         if item.sell_in < 11:
                             if item.quality < 50:
+                                # Increasing item quality the second time
                                 item.quality = item.quality + 1
                         if item.sell_in < 6:
                             if item.quality < 50:
+                                # Increasing item quality the second time
                                 item.quality = item.quality + 1
+            # Checking full sulfuras name but should be sulfuras in the name
+            # Sulfuras does not change sell in date
             if item.name != "Sulfuras, Hand of Ragnaros":
                 item.sell_in = item.sell_in - 1
+            
+            # Item has passed sell by date
             if item.sell_in < 0:
                 if item.name != "Aged Brie":
                     if item.name != "Backstage passes to a TAFKAL80ETC concert":
