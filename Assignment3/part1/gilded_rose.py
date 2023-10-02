@@ -30,6 +30,11 @@ class Iterable(object):
 
 class GildedRose(object):
 
+    SULFURAS = "Sulfuras"
+    AGED_BRIE = "Aged Brie"
+    BACKSTAGE_PASS = "Backstage passes"
+    CONJURED = "Conjured"
+
     def __init__(self, items: list[Item]):
         # DO NOT CHANGE THIS ATTRIBUTE!!!
         self.items = items
@@ -47,19 +52,25 @@ class GildedRose(object):
             
     def get_item_type (self, item_name):
             if "backstage passe" in item_name.lower():
-                return "backstage"
+                return self.BACKSTAGE_PASS
             elif "aged brie" in item_name.lower():
-                return "aged brie"
+                return self.AGED_BRIE
             elif "sulfuras" in item_name.lower():
-                return "sulfuras"
+                return self.SULFURAS
             elif "conjured" in item_name.lower():
-                return "conjured"
+                return self.CONJURED
             else:
                 return "normal"
             
     def quality_adjustment(self, item: Item, item_type):
 
+
+        DEFAULT_MAX_QUALITY = 50
+        DEFAULT_ADJUSTMENT = 1
+
         adjustment = 0
+        adjustment = 0
+
 
         # Determine if the item has passed the sell by date
     	# - Once the sell by date has passed, Quality degrades twice as fast
@@ -68,62 +79,63 @@ class GildedRose(object):
             past_sell_by_date = True
 
 	    # - The Quality of an item is never negative
-        if item.quality <= 1:
+        if item.quality <= 0:
             item.quality = 0
             return 0
 
         # - The Quality of an item is never more than 50
-        if item_type != "sulfuras" and item.quality > 49:
-            item.quality = 50
+        if item_type != self.SULFURAS and item.quality >= DEFAULT_MAX_QUALITY:
+            item.quality = DEFAULT_MAX_QUALITY
             return 0
 
 
 	    # - "Aged Brie" actually increases in Quality the older it gets
-        if item_type == "aged brie":
+        if item_type == self.AGED_BRIE:
             if past_sell_by_date:
-                adjustment = 2
+                adjustment = DEFAULT_ADJUSTMENT * 2
                 return adjustment 
             else:
-                adjustment = 1
+                adjustment = DEFAULT_ADJUSTMENT
                 return adjustment
         # - "Backstage passes", like aged brie, increases in Quality as its SellIn value approaches;
         # Quality increases by 2 when there are 10 days or less and by 3 when there are 5 days or less but
         # Quality drops to 0 after the concert
-        elif item_type == "backstage":
+        elif item_type == self.BACKSTAGE_PASS:
             if item.sell_in >5 and item.sell_in <= 10:
-                adjustment = 2
+                adjustment = DEFAULT_ADJUSTMENT * 2
                 return adjustment
             elif item.sell_in <= 5:
-                adjustment = 3
+                adjustment = DEFAULT_ADJUSTMENT * 3
                 return adjustment
             elif past_sell_by_date:
                 item.quality = 0
                 return 0
             else:
-                adjustment = 1
+                adjustment = DEFAULT_ADJUSTMENT
                 return adjustment
         # - "Sulfuras", being a legendary item, never has to be sold or decreases in Quality
-        elif item_type == "sulfuras":
+        elif item_type == self.SULFURAS:
             adjustment = 0
             return adjustment
         # - "Conjured" items degrade in Quality twice as fast as normal items
-        elif item_type == "conjured":
-            adjustment = -2
+        elif item_type == self.CONJURED:
+            adjustment = -DEFAULT_ADJUSTMENT * 2
             return adjustment
         else:
             if past_sell_by_date:
-                adjustment = -2
+                adjustment = -DEFAULT_ADJUSTMENT * 2
                 return adjustment
             else:
-                adjustment = -1
+                adjustment = -DEFAULT_ADJUSTMENT
                 return adjustment
 
             
     def sell_in_adjustment(self, item: Item, item_name):
-        if item_name == "sulfuras":
+        DEFAULT_ADJUSTMENT = 1
+        if item_name == self.SULFURAS:
             return 0
         else:
-            return -1
+            return -DEFAULT_ADJUSTMENT
 
 
     def update_quality(self):
@@ -146,10 +158,6 @@ class GildedRose(object):
             # Method for determining how much the sell in date should be decreased by
             sell_in_adjustment_amount = self.sell_in_adjustment(item, item_type)
             item.sell_in += sell_in_adjustment_amount
-
-
-
-    
 
             # # Checking a full backstage name but should be backstage in the name
             # if item.name != "Aged Brie" and item.name != "Backstage passes to a TAFKAL80ETC concert":
@@ -188,27 +196,27 @@ class GildedRose(object):
             #         if item.quality < 50:
             #             item.quality = item.quality + 1
 
-def main():
-    items = [
-             Item(name="+5 Dexterity Vest", sell_in=10, quality=20),
-             Item(name="Aged Brie", sell_in=2, quality=0),
-             Item(name="Elixir of the Mongoose", sell_in=5, quality=7),
-             Item(name="Sulfuras, Hand of Ragnaros", sell_in=0, quality=80),
-             Item(name="Sulfuras, Hand of Ragnaros", sell_in=-1, quality=80),
-             Item(name="Backstage passes to a TAFKAL80ETC concert", sell_in=15, quality=20),
-             Item(name="Backstage passes to a TAFKAL80ETC concert", sell_in=10, quality=49),
-             Item(name="Backstage passes to a TAFKAL80ETC concert", sell_in=5, quality=49),
-             Item(name="Conjured Mana Cake", sell_in=3, quality=6),  # <-- :O
-            ]   
-    gilded_rose = GildedRose(items)
-    gilded_rose.update_quality()
-    print("\n")
-    gilded_rose.update_quality()
-    print("\n")
+# def main():
+#     items = [
+#              Item(name="+5 Dexterity Vest", sell_in=10, quality=20),
+#              Item(name="Aged Brie", sell_in=2, quality=0),
+#              Item(name="Elixir of the Mongoose", sell_in=5, quality=7),
+#              Item(name="Sulfuras, Hand of Ragnaros", sell_in=0, quality=80),
+#              Item(name="Sulfuras, Hand of Ragnaros", sell_in=-1, quality=80),
+#              Item(name="Backstage passes to a TAFKAL80ETC concert", sell_in=15, quality=20),
+#              Item(name="Backstage passes to a TAFKAL80ETC concert", sell_in=10, quality=49),
+#              Item(name="Backstage passes to a TAFKAL80ETC concert", sell_in=5, quality=49),
+#              Item(name="Conjured Mana Cake", sell_in=3, quality=6),  # <-- :O
+#             ]   
+#     gilded_rose = GildedRose(items)
+#     gilded_rose.update_quality()
+#     print("\n")
+#     gilded_rose.update_quality()
+#     print("\n")
 
-    gilded_rose.update_quality()
+#     gilded_rose.update_quality()
 
     
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()

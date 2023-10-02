@@ -6,12 +6,6 @@ from gilded_rose import Item, GildedRose
 # unittesting the GildedRose class
 
 class GildedRoseTest(unittest.TestCase):
-    # def test_foo(self):
-    #     items = [Item("foo", 0, 0)]
-    #     gilded_rose = GildedRose(items)
-    #     gilded_rose.update_quality()
-    #     self.assertEquals("fixme", items[0].name)
-
     # 	- All items have a SellIn value which denotes the number of days we have to sell the item
 
     def test_get_item_sell_in(self):
@@ -93,8 +87,8 @@ class GildedRoseTest(unittest.TestCase):
         assert gr.get_item_sell_in("Aged Brie") == 4
         assert gr.get_item_quality("Aged Brie") == 50, f"Expected quality to be 50 quality is {gr.get_item_quality('Aged Brie')}"
 
-        # assert gr.get_item_sell_in("Aged Brie of France") == 4
-        # assert gr.get_item_quality("Aged Brie of France") == 50, f"Expected quality to be 50 quality is {gr.get_item_quality('Aged Brie of France')}"
+        assert gr.get_item_sell_in("Aged Brie of France") == 4
+        assert gr.get_item_quality("Aged Brie of France") == 50, f"Expected quality to be 50 quality is {gr.get_item_quality('Aged Brie of France')}"
 
         # Act
         gr.update_quality()
@@ -119,8 +113,8 @@ class GildedRoseTest(unittest.TestCase):
         assert gr.get_item_sell_in("Sulfuras, Hand of Ragnaros") == 5
         assert gr.get_item_quality("Sulfuras, Hand of Ragnaros") == 80
 
-        # assert gr.get_item_sell_in("Sulfuras, Arm of Ragnaros") == 5
-        # assert gr.get_item_quality("Sulfuras, Arm of Ragnaros") == 80
+        assert gr.get_item_sell_in("Sulfuras, Arm of Ragnaros") == 5
+        assert gr.get_item_quality("Sulfuras, Arm of Ragnaros") == 80
 
 
 	# - "Backstage passes", like aged brie, increases in Quality as its SellIn value approaches;
@@ -141,8 +135,8 @@ class GildedRoseTest(unittest.TestCase):
         assert gr.get_item_sell_in("Backstage passes to a TAFKAL80ETC concert") == 10
         assert gr.get_item_quality("Backstage passes to a TAFKAL80ETC concert") == 21
 
-        # assert gr.get_item_sell_in("Backstage passes to the best concert ever") == 19
-        # assert gr.get_item_quality("Backstage passes to the best concert ever") == 31
+        assert gr.get_item_sell_in("Backstage passes to the best concert ever") == 19
+        assert gr.get_item_quality("Backstage passes to the best concert ever") == 31
 
 	    # Quality increases by 2 when there are 10 days or less
         gr.update_quality()
@@ -175,36 +169,36 @@ class GildedRoseTest(unittest.TestCase):
         
     # Conjured is not updating at all we need to implement 
     # "Conjured" items degrade in Quality twice as fast as normal items
-    # def test_conjured_item(self):
-    #     # Arrange
-    #     items = [Item("Conjured", 5, 42)]
-    #     gr = GildedRose(items)
+    def test_conjured_item(self):
+        # Arrange
+        items = [Item("Conjured", 5, 42)]
+        gr = GildedRose(items)
 
-    #     original_sell_in = gr.get_item_sell_in("Conjured")
-    #     original_quality = gr.get_item_quality("Conjured")
-    #     print(f"Original sell in days is {original_sell_in}")
-    #     print(f"Original quality is {original_quality}")
-
-
-    #     # Act
-    #     gr.update_quality()
-
-    #     print(f"Updated sell in days is {original_sell_in}")
-    #     print(f"Updated quality is {original_quality}")
-
-    #     # Assert
-    #     new_sell_in = gr.get_item_sell_in("Conjured")
-    #     new_quality = gr.get_item_quality("Conjured")
+        original_sell_in = gr.get_item_sell_in("Conjured")
+        original_quality = gr.get_item_quality("Conjured")
+        print(f"Original sell in days is {original_sell_in}")
+        print(f"Original quality is {original_quality}")
 
 
+        # Act
+        gr.update_quality()
 
-    #     assert new_sell_in < original_sell_in
-    #     assert new_sell_in == original_sell_in - 1
+        print(f"Updated sell in days is {original_sell_in}")
+        print(f"Updated quality is {original_quality}")
 
-    #     assert new_quality > -1
-    #     assert new_quality <= 50
-    #     assert new_quality < original_quality
-    #     assert new_quality == original_quality - 2
+        # Assert
+        new_sell_in = gr.get_item_sell_in("Conjured")
+        new_quality = gr.get_item_quality("Conjured")
+
+
+
+        assert new_sell_in < original_sell_in
+        assert new_sell_in == original_sell_in - 1
+
+        assert new_quality > -1
+        assert new_quality <= 50
+        assert new_quality < original_quality
+        assert new_quality == original_quality - 2
 
 
 if __name__ == '__main__':
