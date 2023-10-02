@@ -69,7 +69,6 @@ class GildedRose(object):
         DEFAULT_ADJUSTMENT = 1
 
         adjustment = 0
-        adjustment = 0
 
 
         # Determine if the item has passed the sell by date
@@ -153,7 +152,11 @@ class GildedRose(object):
             # Method for determining how much the quality should be increased or decreased
             quality_adjustment_amount = self.quality_adjustment(item, item_type)
             print(f"The adjustment is: ", quality_adjustment_amount)
-            item.quality += quality_adjustment_amount
+            # Added to handle edge cases
+            if item.quality + quality_adjustment_amount >=50 and item_type != self.SULFURAS:
+                item.quality = 50
+            else:
+                item.quality += quality_adjustment_amount
 
             # Method for determining how much the sell in date should be decreased by
             sell_in_adjustment_amount = self.sell_in_adjustment(item, item_type)
