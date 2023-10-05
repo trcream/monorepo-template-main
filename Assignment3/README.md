@@ -1,13 +1,17 @@
 # TODO Please edit the following information in your assignment
 
-- Name:
+- Name: Trenton Creamer
 - How many hours did it take you to complete this assignment?
+  - This assignment took me around 12 hours to complete
 - Did you collaborate with any other students/TAs/Professors?
+  - I used the professors helpful hints
 - Did you use any external resources? (Cite them below)
   - tbd
   - tbd
 - (Optional) What was your favorite part of the assignment?
+  - Love the coding kata idea. This assignmetn was very practical!
 - (Optional) How would you improve the assignment?
+  - The helpful hint would be more helpful if we received it earlier in the assignment. I thought I was finished and then had to do some serious refactoring.
 
 # Implementation Logistics
 
@@ -19,7 +23,7 @@
 See the folders [part1](./part1) for this assignment.
 
 # Rubric
- 
+
   <table>
   <tbody>
     <tr>
@@ -41,5 +45,5 @@ See the folders [part1](./part1) for this assignment.
   </tbody>
 </table>
 
-* Note: You must also commit any additional files into your repository so we can test your code.
-  * Points will be lost if you forget!
+- Note: You must also commit any additional files into your repository so we can test your code.
+  - Points will be lost if you forget!
