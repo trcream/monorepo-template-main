@@ -50,11 +50,12 @@ class GildedRoseTest(unittest.TestCase):
 	# - The Quality of an item is never negative
     def test_negative_quality(self):
         # Assert
-        items = [Item("test5",5,0)]
+        items = [Item("test5",5,-1)]
         gr = GildedRose(items)
 
         # Act 
         gr.update_quality()
+
 
         # Testing that the quality does not go below 0
         assert gr.get_item_quality("test5") == 0
