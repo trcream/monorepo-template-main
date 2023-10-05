@@ -26,6 +26,51 @@ class Iterable(object):
             return item
         else:
             raise StopIteration
+class AgedBrie(Item):
+    def __init__(self, name, sell_in, quality):
+        super().__init__(name, sell_in, quality)
+    def update_quality(self):
+        if self.quality < 50:
+            self.quality += 1
+        self.sell_in -= 1
+        if self.sell_in < 0 and self.quality < 50:
+            self.quality += 1
+class BackstagePass(Item):
+    def __init__(self, name, sell_in, quality):
+        super().__init__(name, sell_in, quality)
+    def update_quality(self):
+        if self.quality < 50:
+            self.quality += 1
+            if self.sell_in < 11 and self.quality < 50:
+                self.quality += 1
+            if self.sell_in < 6 and self.quality < 50:
+                self.quality += 1
+        self.sell_in -= 1
+        if self.sell_in < 0:
+            self.quality = 0
+class Sulfuras(Item):
+    def __init__(self, name, sell_in, quality):
+        super().__init__(name, sell_in, quality)
+    def update_quality(self):
+        pass
+class Conjured(Item):
+    # def __init__(self, name, sell_in, quality):
+    #     super().__init__(name, sell_in, quality)
+    def update_quality(self):
+        if self.quality > 0:
+            self.quality -= 2
+        self.sell_in -= 1
+        if self.sell_in < 0 and self.quality > 0:
+            self.quality -= 2
+class Normal(Item):
+    # def __init__(self, name, sell_in, quality):
+    #     super().__init__(name, sell_in, quality)
+    def update_quality(self):
+        if self.quality > 0:
+            self.quality -= 1
+        self.sell_in -= 1
+        if self.sell_in < 0 and self.quality > 0:
+            self.quality -= 1
     
 
 class GildedRose(object):
