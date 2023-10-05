@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 class Item:
     DEFAULT_ADJUSTMENT = 1
 
@@ -244,7 +242,6 @@ class GildedRose(object):
         print("Updating quality method called")
         # Let's use the iterator design pattern to loop through the list
         it = iter(self.items)
-        # for item in self.items:
         for item in it:
             
             # First get the type of each item 
