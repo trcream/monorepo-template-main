@@ -239,80 +239,6 @@ class GildedRose(object):
             else:
                 return self.NORMAL
             
-    def quality_adjustment(self, item: Item, item_type):
-
-
-        DEFAULT_MAX_QUALITY = 50
-        DEFAULT_ADJUSTMENT = 1
-
-        adjustment = 0
-
-
-        # Determine if the item has passed the sell by date
-    	# - Once the sell by date has passed, Quality degrades twice as fast
-        past_sell_by_date = False
-        if item.sell_in <= 1:
-            past_sell_by_date = True
-
-	    # - The Quality of an item is never negative
-        if item.quality <= 0:
-            item.quality = 0
-            return 0
-
-        # - The Quality of an item is never more than 50
-        if item_type != self.SULFURAS and item.quality >= DEFAULT_MAX_QUALITY:
-            item.quality = DEFAULT_MAX_QUALITY
-            return 0
-
-
-	    # - "Aged Brie" actually increases in Quality the older it gets
-        if item_type == self.AGED_BRIE:
-            if past_sell_by_date:
-                adjustment = DEFAULT_ADJUSTMENT * 2
-                return adjustment 
-            else:
-                adjustment = DEFAULT_ADJUSTMENT
-                return adjustment
-        # - "Backstage passes", like aged brie, increases in Quality as its SellIn value approaches;
-        # Quality increases by 2 when there are 10 days or less and by 3 when there are 5 days or less but
-        # Quality drops to 0 after the concert
-        elif item_type == self.BACKSTAGE_PASS:
-            if item.sell_in >5 and item.sell_in <= 10:
-                adjustment = DEFAULT_ADJUSTMENT * 2
-                return adjustment
-            elif item.sell_in <= 5:
-                adjustment = DEFAULT_ADJUSTMENT * 3
-                return adjustment
-            elif past_sell_by_date:
-                item.quality = 0
-                return 0
-            else:
-                adjustment = DEFAULT_ADJUSTMENT
-                return adjustment
-        # - "Sulfuras", being a legendary item, never has to be sold or decreases in Quality
-        elif item_type == self.SULFURAS:
-            adjustment = 0
-            return adjustment
-        # - "Conjured" items degrade in Quality twice as fast as normal items
-        elif item_type == self.CONJURED:
-            adjustment = -DEFAULT_ADJUSTMENT * 2
-            return adjustment
-        else:
-            if past_sell_by_date:
-                adjustment = -DEFAULT_ADJUSTMENT * 2
-                return adjustment
-            else:
-                adjustment = -DEFAULT_ADJUSTMENT
-                return adjustment
-
-            
-    def sell_in_adjustment(self, item: Item, item_name):
-        DEFAULT_ADJUSTMENT = 1
-        if item_name == self.SULFURAS:
-            return 0
-        else:
-            return -DEFAULT_ADJUSTMENT
-
 
     def update_quality(self):
         print("Updating quality method called")
@@ -326,13 +252,12 @@ class GildedRose(object):
             item_type = self.get_item_type(item.name)
 
             # Method for determining how much the quality should be increased or decreased
-            quality_adjustment_amount = self.quality_adjustment(item, item_type)
             itemClass = self.item_type_to_class.get(item_type)
-            newItem = itemClass(item.name, item.sell_in, item.quality)
+            newObject = itemClass(item.name, item.sell_in, item.quality)
+            quality_adjustment_amount = newObject.update_quality_amount()
 
             print(f"The item type is: {item_type}")
-            print(f"The adjustment is: ", quality_adjustment_amount)
-            print((f"The new adjustment is {newItem.update_quality_amount()}"))
+            print((f"The adjustment is {quality_adjustment_amount}"))
             # Added to handle edge cases
             if item.quality + quality_adjustment_amount >=50 and item_type != self.SULFURAS:
                 item.quality = 50
@@ -340,13 +265,10 @@ class GildedRose(object):
                 item.quality += quality_adjustment_amount
 
             # Method for determining how much the sell in date should be decreased by
-            sell_in_adjustment_amount = self.sell_in_adjustment(item, item_type)
-            item.sell_in += sell_in_adjustment_amount
-            print("The old sell in amount is : ", sell_in_adjustment_amount)
-            print("The new sell in amount is : ", newItem.sell_in_adjustment())
+            sell_in_adjustment_amount_ = newObject.sell_in_adjustment()
+            item.sell_in += sell_in_adjustment_amount_
+            print("The sell in amount is : ", sell_in_adjustment_amount_)
             print("\n")
-
-
 
 
 def main():
