@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 
 class Item:
-    """ DO NOT CHANGE THIS CLASS!!!"""
+    DEFAULT_ADJUSTMENT = 1
 
+    """ DO NOT CHANGE THIS CLASS!!!"""
     def __init__(self, name, sell_in, quality):
         self.name = name
         self.sell_in = sell_in
@@ -19,6 +20,17 @@ class Item:
         if self.quality <= 0:
             self.quality = 0
             return 0
+    def max_quality_check(self):
+        DEFAULT_MAX_QUALITY = 50
+        if self.quality >= DEFAULT_MAX_QUALITY:
+            self.quality = DEFAULT_MAX_QUALITY
+            return 0
+        
+    def past_sell_by_date(self):
+        if self.sell_in <= 1:
+            return True
+        else:
+            return False
     
     
 class Iterable(object):
@@ -40,34 +52,29 @@ class AgedBrie(Item):
     def __init__(self, name, sell_in, quality):
         super().__init__(name, sell_in, quality)
     def update_quality_amount(self):
-        DEFAULT_MAX_QUALITY = 50
-        DEFAULT_ADJUSTMENT = 1
 
         adjustment = 0
 
-        past_sell_by_date = False
 
 	    # - The Quality of an item is never negative
-        super().negative_quality_check()
-
+        if super().negative_quality_check() == 0:
+            return 0   
         # - The Quality of an item is never more than 50
-        if  self.quality >= DEFAULT_MAX_QUALITY:
-            self.quality = DEFAULT_MAX_QUALITY
+        if super().max_quality_check() == 0:
             return 0
         # checking to see if past sell by date
-        if self.sell_in <= 1:
-            past_sell_by_date = True
+        past_sell_by_date = super().past_sell_by_date()
         
 	    # - "Aged Brie" actually increases in Quality the older it gets
         if past_sell_by_date:
-            adjustment = DEFAULT_ADJUSTMENT * 2
+            adjustment = Item.DEFAULT_ADJUSTMENT * 2
             return adjustment 
         else:
-            adjustment = DEFAULT_ADJUSTMENT
+            adjustment = Item.DEFAULT_ADJUSTMENT
             return adjustment
     def sell_in_adjustment(self):
-        DEFAULT_ADJUSTMENT = 1
-        return -DEFAULT_ADJUSTMENT
+        Item.DEFAULT_ADJUSTMENT = 1
+        return -Item.DEFAULT_ADJUSTMENT
 
 
 
@@ -76,41 +83,41 @@ class BackstagePass(Item):
         super().__init__(name, sell_in, quality)
     
     def update_quality_amount(self):
-        DEFAULT_MAX_QUALITY = 50
-        DEFAULT_ADJUSTMENT = 1
 
         adjustment = 0
 
-        past_sell_by_date = False
 
 	    # - The Quality of an item is never negative
-        super().negative_quality_check()
+        if super().negative_quality_check() == 0:
+            return 0   
 
 
         # - The Quality of an item is never more than 50
-        if  self.quality >= DEFAULT_MAX_QUALITY:
-            self.quality = DEFAULT_MAX_QUALITY
+        if super().max_quality_check() == 0:
             return 0
+
+        # checking to see if past sell by date
+        past_sell_by_date = super().past_sell_by_date()
         
         # - "Backstage passes", like aged brie, increases in Quality as its SellIn value approaches;
         # Quality increases by 2 when there are 10 days or less and by 3 when there are 5 days or less but
         # Quality drops to 0 after the concert
         if self.sell_in >5 and self.sell_in <= 10:
-            adjustment = DEFAULT_ADJUSTMENT * 2
+            adjustment = Item.DEFAULT_ADJUSTMENT * 2
             return adjustment
         elif self.sell_in <= 5:
-            adjustment = DEFAULT_ADJUSTMENT * 3
+            adjustment = Item.DEFAULT_ADJUSTMENT * 3
             return adjustment
         elif past_sell_by_date:
             self.quality = 0
             return 0
         else:
-            adjustment = DEFAULT_ADJUSTMENT
+            adjustment = Item.DEFAULT_ADJUSTMENT
             return adjustment
         
     def sell_in_adjustment(self):
-        DEFAULT_ADJUSTMENT = 1
-        return -DEFAULT_ADJUSTMENT
+        Item.DEFAULT_ADJUSTMENT = 1
+        return -Item.DEFAULT_ADJUSTMENT
 
 class Sulfuras(Item):
     def __init__(self, name, sell_in, quality):
@@ -128,23 +135,24 @@ class Conjured(Item):
         super().__init__(name, sell_in, quality)
     
     def update_quality_amount(self):
-        DEFAULT_MAX_QUALITY = 50
-        DEFAULT_ADJUSTMENT = 1
 
         adjustment = 0
 
-        past_sell_by_date = False
-
 	    # - The Quality of an item is never negative
-        super().negative_quality_check()
+        if super().negative_quality_check() == 0:
+            return 0   
 
 
         # - The Quality of an item is never more than 50
-        if  self.quality >= DEFAULT_MAX_QUALITY:
-            self.quality = DEFAULT_MAX_QUALITY
+        if super().max_quality_check() == 0:
             return 0
+        
+        # checking to see if past sell by date
+        past_sell_by_date = super().past_sell_by_date()
+
+        
         # - "Conjured" items degrade in Quality twice as fast as normal items
-        adjustment = -DEFAULT_ADJUSTMENT * 2
+        adjustment = -Item.DEFAULT_ADJUSTMENT * 2
         return adjustment
     def sell_in_adjustment(self):
         DEFAULT_ADJUSTMENT = 1
@@ -155,24 +163,31 @@ class Normal(Item):
         super().__init__(name, sell_in, quality)
     
     def update_quality_amount(self):
-        DEFAULT_MAX_QUALITY = 50
-        DEFAULT_ADJUSTMENT = 1
 
         adjustment = 0
 
         past_sell_by_date = False
 
 	    # - The Quality of an item is never negative
-        super().negative_quality_check()
+        if super().negative_quality_check() == 0:
+            return 0   
 
 
         # - The Quality of an item is never more than 50
-        if  self.quality >= DEFAULT_MAX_QUALITY:
-            self.quality = DEFAULT_MAX_QUALITY
+        if super().max_quality_check() == 0:
             return 0
         
-        adjustment = -DEFAULT_ADJUSTMENT
-        return adjustment
+        # checking to see if past sell by date
+        past_sell_by_date = super().past_sell_by_date()
+    
+        if past_sell_by_date:
+            adjustment = -Item.DEFAULT_ADJUSTMENT * 2
+            return adjustment
+        else:
+            adjustment = -Item.DEFAULT_ADJUSTMENT
+            return adjustment
+    
+
     def sell_in_adjustment(self):
         DEFAULT_ADJUSTMENT = 1
         return -DEFAULT_ADJUSTMENT
