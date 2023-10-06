@@ -1,5 +1,4 @@
 class Item:
-    DEFAULT_ADJUSTMENT = 1
 
     """ DO NOT CHANGE THIS CLASS!!!"""
 
@@ -31,6 +30,8 @@ class Iterable(object):
 
 
 class AgedBrie(Item):
+    DEFAULT_ADJUSTMENT = 1
+
     def __init__(self, name, sell_in, quality):
         super().__init__(name, sell_in, quality)
 
@@ -57,18 +58,19 @@ class AgedBrie(Item):
 
         # - "Aged Brie" actually increases in Quality the older it gets
         if past_sell_by_date:
-            adjustment = Item.DEFAULT_ADJUSTMENT * 2
+            adjustment = self.DEFAULT_ADJUSTMENT * 2
             return adjustment
         else:
-            adjustment = Item.DEFAULT_ADJUSTMENT
+            adjustment = self.DEFAULT_ADJUSTMENT
             return adjustment
 
     def sell_in_adjustment(self):
         Item.DEFAULT_ADJUSTMENT = 1
-        return -Item.DEFAULT_ADJUSTMENT
+        return -self.DEFAULT_ADJUSTMENT
 
 
 class BackstagePass(Item):
+    DEFAULT_ADJUSTMENT = 1
     def __init__(self, name, sell_in, quality):
         super().__init__(name, sell_in, quality)
 
@@ -98,21 +100,21 @@ class BackstagePass(Item):
         # Quality increases by 2 when there are 10 days or less and by 3 when there are 5 days or less but
         # Quality drops to 0 after the concert
         if self.sell_in > 5 and self.sell_in <= 10:
-            adjustment = Item.DEFAULT_ADJUSTMENT * 2
+            adjustment = self.DEFAULT_ADJUSTMENT * 2
             return adjustment
         elif self.sell_in <= 5:
-            adjustment = Item.DEFAULT_ADJUSTMENT * 3
+            adjustment = self.DEFAULT_ADJUSTMENT * 3
             return adjustment
         elif past_sell_by_date:
             self.quality = 0
             return 0
         else:
-            adjustment = Item.DEFAULT_ADJUSTMENT
+            adjustment = self.DEFAULT_ADJUSTMENT
             return adjustment
 
     def sell_in_adjustment(self):
-        Item.DEFAULT_ADJUSTMENT = 1
-        return -Item.DEFAULT_ADJUSTMENT
+        self.DEFAULT_ADJUSTMENT = 1
+        return -self.DEFAULT_ADJUSTMENT
 
 
 class Sulfuras(Item):
@@ -128,6 +130,8 @@ class Sulfuras(Item):
 
 
 class Conjured(Item):
+    DEFAULT_ADJUSTMENT = 1
+
     def __init__(self, name, sell_in, quality):
         super().__init__(name, sell_in, quality)
 
@@ -154,7 +158,7 @@ class Conjured(Item):
         else:
             past_sell_by_date =  False
         # - "Conjured" items degrade in Quality twice as fast as normal items
-        adjustment = -Item.DEFAULT_ADJUSTMENT * 2
+        adjustment = -self.DEFAULT_ADJUSTMENT * 2
         return adjustment
 
     def sell_in_adjustment(self):
@@ -163,6 +167,8 @@ class Conjured(Item):
 
 
 class Normal(Item):
+    DEFAULT_ADJUSTMENT = 1
+
     def __init__(self, name, sell_in, quality):
         super().__init__(name, sell_in, quality)
 
@@ -192,11 +198,11 @@ class Normal(Item):
             past_sell_by_date =  False
 
         if past_sell_by_date and self.quality >= 2:
-            adjustment = -Item.DEFAULT_ADJUSTMENT * 2
+            adjustment = -self.DEFAULT_ADJUSTMENT * 2
             return adjustment
         else:
             if self.quality >= 1:
-                adjustment = -Item.DEFAULT_ADJUSTMENT
+                adjustment = -self.DEFAULT_ADJUSTMENT
                 return adjustment
             else:
                 return 0
