@@ -8,32 +8,8 @@ class Item:
         self.sell_in = sell_in
         self.quality = quality
 
-    # Printing off item info when item is printed
     def __repr__(self):
         return "%s, %s, %s," % (self.name, self.sell_in, self.quality)
-
-    def update_quality_amount(self):
-        pass
-
-    def sell_in_adjustment(self):
-        pass
-
-    def negative_quality_check(self):
-        if self.quality < 0:
-            self.quality = 0
-            return 0
-
-    def max_quality_check(self):
-        DEFAULT_MAX_QUALITY = 50
-        if self.quality >= DEFAULT_MAX_QUALITY:
-            self.quality = DEFAULT_MAX_QUALITY
-            return 0
-
-    def past_sell_by_date(self):
-        if self.sell_in <= 0:
-            return True
-        else:
-            return False
 
 
 class Iterable(object):
@@ -63,14 +39,21 @@ class AgedBrie(Item):
         adjustment = 0
 
         # - The Quality of an item is never negative
-        if super().negative_quality_check() == 0:
-
+        if self.quality < 0:
+            self.quality = 0
             return 0
         # - The Quality of an item is never more than 50
-        if super().max_quality_check() == 0:
+        DEFAULT_MAX_QUALITY = 50
+        if self.quality >= DEFAULT_MAX_QUALITY:
+            self.quality = DEFAULT_MAX_QUALITY
             return 0
         # checking to see if past sell by date
-        past_sell_by_date = super().past_sell_by_date()
+        past_sell_by_date = False
+
+        if self.sell_in <= 0:
+            past_sell_by_date = True
+        else:
+            past_sell_by_date =  False
 
         # - "Aged Brie" actually increases in Quality the older it gets
         if past_sell_by_date:
@@ -94,16 +77,23 @@ class BackstagePass(Item):
         adjustment = 0
 
         # - The Quality of an item is never negative
-        if super().negative_quality_check() == 0:
+        if self.quality < 0:
+            self.quality = 0
             return 0
 
         # - The Quality of an item is never more than 50
-        if super().max_quality_check() == 0:
+        DEFAULT_MAX_QUALITY = 50
+        if self.quality >= DEFAULT_MAX_QUALITY:
+            self.quality = DEFAULT_MAX_QUALITY
             return 0
 
         # checking to see if past sell by date
-        past_sell_by_date = super().past_sell_by_date()
+        past_sell_by_date = False
 
+        if self.sell_in <= 0:
+            past_sell_by_date = True
+        else:
+            past_sell_by_date =  False
         # - "Backstage passes", like aged brie, increases in Quality as its SellIn value approaches;
         # Quality increases by 2 when there are 10 days or less and by 3 when there are 5 days or less but
         # Quality drops to 0 after the concert
@@ -146,16 +136,23 @@ class Conjured(Item):
         adjustment = 0
 
         # - The Quality of an item is never negative
-        if super().negative_quality_check() == 0:
+        if self.quality < 0:
+            self.quality = 0
             return 0
 
         # - The Quality of an item is never more than 50
-        if super().max_quality_check() == 0:
+        DEFAULT_MAX_QUALITY = 50
+        if self.quality >= DEFAULT_MAX_QUALITY:
+            self.quality = DEFAULT_MAX_QUALITY
             return 0
 
         # checking to see if past sell by date
-        past_sell_by_date = super().past_sell_by_date()
+        past_sell_by_date = False
 
+        if self.sell_in <= 0:
+            past_sell_by_date = True
+        else:
+            past_sell_by_date =  False
         # - "Conjured" items degrade in Quality twice as fast as normal items
         adjustment = -Item.DEFAULT_ADJUSTMENT * 2
         return adjustment
@@ -176,15 +173,23 @@ class Normal(Item):
         past_sell_by_date = False
 
         # - The Quality of an item is never negative
-        if super().negative_quality_check() == 0:
+        if self.quality < 0:
+            self.quality = 0
             return 0
 
         # - The Quality of an item is never more than 50
-        if super().max_quality_check() == 0:
+        DEFAULT_MAX_QUALITY = 50
+        if self.quality >= DEFAULT_MAX_QUALITY:
+            self.quality = DEFAULT_MAX_QUALITY
             return 0
 
         # checking to see if past sell by date
-        past_sell_by_date = super().past_sell_by_date()
+        past_sell_by_date = False
+
+        if self.sell_in <= 0:
+            past_sell_by_date = True
+        else:
+            past_sell_by_date =  False
 
         if past_sell_by_date and self.quality >= 2:
             adjustment = -Item.DEFAULT_ADJUSTMENT * 2
