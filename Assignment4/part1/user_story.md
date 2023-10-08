@@ -1,4 +1,4 @@
-As a <User> I can <send money>, so that my <chosen recipient receives the money>.
+As an User I can send money, so that my chosen recipient receives the money.
 
 Acceptance Criteria:
 
