@@ -1,5 +1,4 @@
-As a <role> I can <capability>, so that <receive benefit>
-As a User I can send money, so that my chosen recipient receives the money.
+As a <User> I can <send money>, so that my <chosen recipient receives the money>.
 
 Acceptance Criteria:
 
