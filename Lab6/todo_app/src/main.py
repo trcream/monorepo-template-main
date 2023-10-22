@@ -29,15 +29,29 @@ def first_apiV4(path_param: str, actor: str):
     # curl 'http://127.0.0.1:8000/books/main_actor/?actor=Harry'
     return {"msg": path_param, "actor": actor}
 
+# Get request to get all of the books
+@app.get("/books/")
+def first_apiV5():
+    return {"msg": "all books"}
+
 # Create a POST ReST API
-#  curl 'http://127.0.0.1:8000/books/create_book' -d "{'title': 'Harry Potter', 'author' : 'J.K Rowling', 'category': fiction'}" 
+#  curl 'http://127.0.0.1:8000/books/create_book' -d "{'title': 'Harry Potter', 'author' : 'J.K Rowling', 'category': 'fiction'}" 
 @app.post("/books/create_book")
-def first_api_postV5(new_book = Body()):
+def first_api_post(new_book = Body()):
     print(new_book)
     return {"msg": new_book}
 
 
 # Create a PUT ReST API 
+# Put is for updating existing data
+@app.put("/books/update_book")
+def first_api_put(update_book = Body()):
+    print(f"The book has been updated {update_book}")
+    return {"msg": update_book}
 
 
 # Create a DELETE ReST API
+@app.delete("/books/delete_book")
+def first_api_delete(delete_book = Body()):
+    print(f"The book has been deleted {delete_book}")
+    return {"msg": delete_book}
